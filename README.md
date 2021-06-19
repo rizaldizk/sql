@@ -1,6 +1,10 @@
 # sql
-SQL PRACTICES
+SQL PRACTICES #1
+
+
 Source: https://www.youtube.com/watch?v=ucIFJXnF6EY&ab_channel=KunaalNaikKunaalNaik
+
+
 Dataset: https://github.com/KunaalNaik/YT_SQL_for_DataScience/tree/master/Webinar
 
 In this practice, I solved the following problems:
