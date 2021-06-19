@@ -1,0 +1,29 @@
+----SELECTING 3 MOST SOLD ITEMS---
+SELECT tr_orderdetails.productid, tr_products.productname, tr_products.productcategory, SUM(tr_orderdetails.quantity) most_sold FROM tr_orderdetails
+INNER JOIN tr_products
+ON tr_orderdetails.productid = tr_products.productid
+GROUP BY tr_orderdetails.productid, tr_products.productname, tr_products.productcategory
+ORDER BY most_sold DESC
+LIMIT 3;
+
+---COUNT THE NUMBER OF ITEMS IN EACH CATEGORY---
+SELECT productcategory, COUNT(*) FROM tr_products
+GROUP BY productcategory;
+
+---SHOW TOP 3 MOST REVENUE GENERATING ITEMS AS WEL AS ITS CATEGORIES---
+SELECT tr_products.productname itemname, tr_products.productcategory category, SUM(tr_orderdetails.quantity) * tr_products.price revenue FROM tr_orderdetails
+INNER JOIN tr_products
+ON tr_products.productid = tr_orderdetails.productid
+GROUP BY itemname, category, tr_products.price
+ORDER BY revenue DESC
+LIMIT 3;
+
+---SHOW TOP 3 CITIES WITH HIGHEST BUYING POWER---
+SELECT tr_propertyinfo.propcity city, SUM(tr_orderdetails.quantity * tr_products.price) purchase_value FROM tr_propertyinfo
+INNER JOIN tr_orderdetails
+ON tr_orderdetails.propertyid = tr_propertyinfo.propid
+INNER JOIN tr_products
+ON tr_products.productid = tr_orderdetails.productid
+GROUP BY city
+ORDER BY purchase_value DESC
+LIMIT 3;
